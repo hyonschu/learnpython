@@ -1,7 +1,8 @@
 from random import randrange
 def guessme():
         totalrange=101
-        print "Please think of a number between 0 and %s" %totalrange
+        blah = totalrange-1
+        print "Please think of a number between 0 and %s" %blah
         rng = randrange(totalrange+1)
         guess = False
         minrange=0
@@ -25,4 +26,4 @@ def guessme():
                         break
                 else:
                         print "Sorry, I did not understand your input."
-        print "\nGame over. Your secret number was: %s \nIt took %s number of guesses" % (rng, guesses)
+        print "\nGame over. Your secret number was: %s \n\nIt took %s number of guesses" % (rng, guesses)
