@@ -1,3 +1,5 @@
+#CHALLENGE - given a list of words, return the words that are anagrams of other words within the same list
+
 def anagrams(input):
     output = []
     output2 = []
