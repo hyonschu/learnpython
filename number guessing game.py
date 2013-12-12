@@ -1,3 +1,5 @@
+#CHALLENGE - create a number guessing game using number bisection
+
 from random import randrange
 def guessme():
         totalrange=101
