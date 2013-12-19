@@ -21,7 +21,7 @@ def gattaca(filename):
 	d=[]
 	f=open(filename)
 	for line in f:
-	  line.replace("\n", "") # delete all newline characters
+		line.replace("\n", "") # delete all newline characters
 		d.append(list(line)) # turn each line into an array
 	data = map(None,*d) # transpose each row into a column, imputate None where there are no entries
 	linecount = 1 #
