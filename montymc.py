@@ -1,8 +1,6 @@
 ### This is a brute force monte carlo simulation to validate the solution to the Monty Hall problem
-### 
-
-
 class montymc(object):
+
 	"""
 	### VARIABLES ###
 	defaults to:
@@ -15,7 +13,7 @@ class montymc(object):
 	switch = 0, no switching
 	switch = 1, always switch
 	switch = 2, random
-	
+
 	### RETURNING RESULTS ###
 	.wins returns a list of wins for every simulation
 	.totals returns a list of total trials per simulation
@@ -29,6 +27,12 @@ class montymc(object):
 	def __init__(self, samples=100, simulations=5,doors=3, switch=1):
 		# print "Ready to go! Run simulations using"
 		# print ".simulation(samples, simulations, doors, switch)"
+		if doors < 3:
+			print "Monty Hall demands at least 3 doors!"
+			return
+		if switch > 2:
+			print "error: switch=0: no switching; 1: always switch; 2: random switch"
+			return
 		self.samples = samples
 		self.simulations = simulations
 		self.doors = doors
@@ -36,18 +40,13 @@ class montymc(object):
 		self.simuran = 0
 		self.run(samples, simulations, doors, switch)
 
+
 	def run(self, samples, simulations, doors, switch):
 		import numpy as np
 		import random
-
 		doors = self.doors
 		simulations = self.simulations
 		switch = self.switch
-
-		if doors < 3:
-			return "Monty Hall demands at least 3 doors!"
-		if switch > 2:
-			return "error: switch=0: no switching; 1: always switch; 2: random switch"
 		simuresults = []#[['wins', 'played', 'win %']]
 		for i in range(simulations):
 			wins = 0
@@ -83,4 +82,4 @@ class montymc(object):
 		self.averages = [np.mean(self.wins), np.mean(self.total), np.mean(self.percentage)]
 		self.results = [self.wins, self.total, self.percentage]
 		print '\nWin-Percentage of each trial:\n', self.results[2]
-		print '\nOverall Win-Percentag:', np.mean(self.results[2])
+		print '\nOverall Win-Percentage:', np.mean(self.results[2])*100, "%"
