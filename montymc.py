@@ -3,8 +3,6 @@
 
 
 class montymc(object):
-	import numpy as np
-	import random
 	"""
 	### VARIABLES ###
 	defaults to:
@@ -39,8 +37,8 @@ class montymc(object):
 		self.run(samples, simulations, doors, switch)
 
 	def run(self, samples, simulations, doors, switch):
-
-
+		import numpy as np
+		import random
 
 		doors = self.doors
 		simulations = self.simulations
