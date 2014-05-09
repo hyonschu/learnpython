@@ -15,8 +15,8 @@ class montymc(object):
 	switch = 0, no switching
 	switch = 1, always switch
 	switch = 2, random
-
-  ### RETURNING RESULTS ###
+	
+	### RETURNING RESULTS ###
 	.wins returns a list of wins for every simulation
 	.totals returns a list of total trials per simulation
 	.percentage returns a list of wins/totals per simulation
