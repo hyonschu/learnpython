@@ -3,6 +3,8 @@
 
 
 class montymc(object):
+	import numpy as np
+	import random
 	"""
 	### VARIABLES ###
 	defaults to:
@@ -82,3 +84,5 @@ class montymc(object):
 		self.simuran=1
 		self.averages = [np.mean(self.wins), np.mean(self.total), np.mean(self.percentage)]
 		self.results = [self.wins, self.total, self.percentage]
+		print '\nWin-Percentage of each trial:\n', self.results[2]
+		print '\nOverall Win-Percentag:', np.mean(self.results[2])
