@@ -25,3 +25,19 @@ def ana(word, words):
         if "".join(sorted(i)) == a:
             anas.append(i)
     return anas
+
+
+# version 3
+def ana(lst):
+    results=set()
+    for word in lst:
+        clone = [cloneword for cloneword in lst]
+        asdf = sorted(word.lower())
+        clone.remove(word)
+        #print clone
+        for word2 in clone:
+            asdf2 = sorted(word2.lower())
+            if asdf == asdf2:
+                results.add(word)
+                results.add(word2)
+    return results
