@@ -7,7 +7,7 @@ no_of_rolls = 100
 list_id = 0
 # this is used to identify to a list in my_set
 for i in range(no_of_rolls)*7:
-  roll_outcome = int(random.random()*7)
+  roll_outcome = int(random.random()*6)
   my_set[list_id].append(roll_outcome)
   list_id += 1
   if list_id > 6:
