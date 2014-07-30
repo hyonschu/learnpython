@@ -1,0 +1,12 @@
+def reservoir( stream_of_incoming_emails, K ):
+  emails = []
+  N = 0
+  for email in stream_of_incoming_emails:
+    N += 1
+    if len( emails ) < K:
+      result.append( email )
+    else:
+      s = int(random.random() * N)
+      if s < K:
+          result[ s ] = item
+  return result
