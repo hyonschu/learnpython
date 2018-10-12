@@ -1,0 +1,40 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+%matplotlib inline
+
+df = pd.read_csv('YOUR_FILE_HERE.CSV')
+
+# fix those timestamps
+df['first_action'] = pf.to_datetime(df['first_action'])
+df['last_action'] = pd.to_datetime(df['last_action'])
+
+# create month and day or whatever your time frame is for when they JOINED
+df['joined'] = df.activation_time.apply(lambda x: x.strftime('%Y-%m'))
+
+# create month and day for when they LEFT (or last action)
+df['left'] = df.expiration_time.apply(lambda x: x.strftime('%Y-%m'))
+
+# count the number of accounts that joined within your grouping
+totals = df.groupby('joined').count()['order_id']
+
+# group them by their join date, THEN by when they left (order_id is any unique identifier)
+newdf = (df.groupby(['joined','left']).count()['order_id'])
+
+# turn this into a matrix
+newdf = newdf.unstack(-1).reset_index()
+
+# make new dataframe, delete the unnecessary extra column
+newdf.index = newdf.joined
+del newdf['joined']
+
+# if you want retention a COUNT:
+chart = -newdf.cumsum(1).sub(totals, axis=0)
+
+# if you want retention AS A PERCENTAGE:
+chart = 1-newdf.cumsum(1).divide(totals, axis=0).ffill(axis=1)
+
+# if you want a HEATMAP
+sns.heatmap(chart)
